@@ -1,4 +1,4 @@
-class CreateTables < ActiveRecord::Migration
+class CreateSnippetsTables < ActiveRecord::Migration
   def self.up
     create_table "snippets_snippets", :force => true do |t|
       t.string   "key"
