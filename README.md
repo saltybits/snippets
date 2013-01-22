@@ -65,6 +65,7 @@ Use the texteditor to edit the snippets' content.
 <h1><%= Snippets.get('welcome/headline') %></h1>
 <p><%= Snippets.get('welcome/message') %></p>
 
-# or, use `Snippets.get!` if to allow the welcome message to be marked up
+# or, use `Snippets.get!` to allow the welcome message to be marked up.
+# (equivalent to `Snippets.get(...).html_safe`)
 <div class="welcome-message"><%= Snippets.get!('welcome/message') %></div>
 ```
