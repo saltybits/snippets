@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= Snippets.config.title %></title>
+  <%= stylesheet_link_tag    "snippets/application", :media => "all" %>
+  <%= javascript_include_tag "snippets/application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<div class="container-fluid">
+	<header>
+		<h1>
+			<%= link_to_if Snippets.config.url, Snippets.config.title, Snippets.config.url %>
+		</h1>
+	</header>
+
+	<div class="row-fluid">
+		<div class="span2 navigation">
+			<%= render :partial => "layouts/snippets/snippet", :collection => Snippets.tree %>
+		</div>
+
+		<div class="span10 content">
+			<%= render :partial => "layouts/snippets/flash", :object => flash %>
+
+			<%= yield %>
+		</div>
+	</div>
+
+	<footer class="muted">
+		Snippets CMS &copy; Salty Bits
+	</footer>
+</div>
+
+</body>
+</html>

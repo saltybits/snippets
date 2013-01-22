@@ -1,0 +1,3 @@
+= Snippets
+
+A simple, developer focused CMS for Rails. 

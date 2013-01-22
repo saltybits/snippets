@@ -1,0 +1,15 @@
+<h5>
+	Editing <%= @snippet.crumbs.join(" / ") %>
+
+	<% if @snippet.versions.count > 0 %>
+		<small>
+			<%= link_to "v#{@snippet.versions.count}", edit_snippet_url(@snippet) %>
+
+			<% @snippet.versions.reverse.each do |version| %>
+			  <%= link_to "v#{version.index}", edit_snippet_url(@snippet, :version => version.index) unless version.index == 0 %>
+			<% end %>
+		</small>
+	<% end %>
+</h5>
+
+<%= render 'form' %>

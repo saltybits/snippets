@@ -1,0 +1,13 @@
+<% if snippet.children.empty? %>
+	<%= link_to snippet.label, edit_snippet_url(snippet) %>
+<% else %>
+	<%= snippet.label %>
+
+	<ul class="snippets">
+		<% snippet.children.each do |snippet| %>
+			<li class="snippet <%= "active" if @snippet && snippet.id == @snippet.id %>">
+				<%= render :partial => "layouts/snippets/snippet", :object => snippet %>
+			</li>
+		<% end %>
+	</ul>
+<% end %>
