@@ -6,7 +6,7 @@ module Snippets
         Snippets.config.reset
         Snippet.destroy_all
     end
-    
+
     test "#find returns the Snippet itself" do
     	Snippet.create(:key => :home, :content => "Testing")
     	assert_instance_of Snippet, Snippets.find(:home)
@@ -21,9 +21,19 @@ module Snippets
         assert Snippets.set(:home, "Home content") == true
     end
 
-    test "#get returns unescaped the Snippet content" do
+    test "#get returns the content" do
     	Snippets.set(:home, "<p>Testing</p>")
-    	assert Snippets.get(:home) == "<p>Testing</p>"
+
+        content = Snippets.get(:home)
+
+    	assert content == "<p>Testing</p>"
+        assert !content.html_safe?
+    end
+
+    test "#get! returns the html_safe version of content" do
+        Snippets.set(:home, "<p>Testing</p>")
+
+        assert Snippets.get!(:home).html_safe?
     end
   end
 end

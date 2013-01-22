@@ -32,7 +32,11 @@ module Snippets
 		end
 
 		def get(key)
-			(find(key).content || '').html_safe
+			find(key).content || ''
+		end
+
+		def get!(key)
+			get(key).html_safe
 		end
 
 		def set(key, content)
