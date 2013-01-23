@@ -28,7 +28,9 @@ module Snippets
 		end
 
 		def find(key)
-			@@configuration.snippets[key.to_s] ||= Snippet.where(:key => key).first
+			# Running into caching problems with live data. Skip caching for now.
+			# @@configuration.snippets[key.to_s] ||= 
+			Snippet.where(:key => key).first
 		end
 
 		def get(key)

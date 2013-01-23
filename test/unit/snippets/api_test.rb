@@ -21,6 +21,18 @@ module Snippets
         assert Snippets.set(:home, "Home content") == true
     end
 
+    test "changes to the content are picked up immediately" do
+        Snippets.config do |config|
+            config.sitemap do
+                home
+            end
+        end
+
+        Snippets.set(:home, "456")
+
+        assert Snippets.get(:home) == "456"
+    end
+
     test "#get returns the content" do
     	Snippets.set(:home, "<p>Testing</p>")
 

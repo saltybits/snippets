@@ -2,6 +2,7 @@ class CreateSnippetsTables < ActiveRecord::Migration
   def self.up
     create_table "snippets_snippets", :force => true do |t|
       t.string   "key"
+      t.string   "label"
       t.text     "content"
       t.datetime "created_at", :null => false
       t.datetime "updated_at", :null => false

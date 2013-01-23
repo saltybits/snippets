@@ -1,7 +1,7 @@
 class Snippets::Snippet < ActiveRecord::Base
 	has_paper_trail :only => [:content], :class_name => 'Snippets::Version'
 	
-  attr_accessor :label, :parent, :children
+  attr_accessor :parent, :children
   attr_accessible :key, :label, :content
 
   validates :key, :presence => true, :uniqueness => true
@@ -36,10 +36,5 @@ class Snippets::Snippet < ActiveRecord::Base
 
   def label
   	self[:label] || base_key.to_s.titleize
-  end
-
-  # label isn't being set properly through attr_accessor for some reason
-  def label=(label)
-     self[:label] = label
   end
 end

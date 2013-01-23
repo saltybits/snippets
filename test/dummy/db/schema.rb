@@ -11,13 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130122212228) do
+ActiveRecord::Schema.define(:version => 20130122235823) do
 
   create_table "snippets_snippets", :force => true do |t|
     t.string   "key"
     t.text     "content"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "label"
   end
 
   add_index "snippets_snippets", ["key"], :name => "index_snippets_snippets_on_key", :unique => true
