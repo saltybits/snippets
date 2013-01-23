@@ -69,3 +69,8 @@ Use the texteditor to edit the snippets' content.
 # (equivalent to `Snippets.get(...).html_safe`)
 <div class="welcome-message"><%= Snippets.get!('welcome/message') %></div>
 ```
+
+## Notes
+
+Snippets was deliberately designed to not allow new Snippets to be defined at runtime.  To add / remove snippets
+you must update the initializer and restart the server.

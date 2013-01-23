@@ -1,7 +1,7 @@
 <% if snippet.children.empty? %>
 	<%= link_to snippet.label, edit_snippet_url(snippet) %>
 <% else %>
-	<%= snippet.label %>
+	<h6><%= snippet.label %></h6>
 
 	<ul class="snippets">
 		<% snippet.children.each do |snippet| %>

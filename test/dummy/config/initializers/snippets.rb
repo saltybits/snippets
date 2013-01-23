@@ -12,6 +12,10 @@ Snippets.configure do |config|
 
 		news do
 			highlights
+			focus do
+				s1("Section I")
+				s2("Section II")
+			end
 		end
 	end
 end

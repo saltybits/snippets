@@ -16,6 +16,15 @@ header a {
 	color:inherit;
 }
 
+.navigation {
+	font-size:0.8em;
+}
+
+.navigation h6 {
+	margin-bottom:0;
+	text-transform:uppercase;
+}
+
 footer {
 	text-align:center;
 }
