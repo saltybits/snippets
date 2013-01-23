@@ -24,7 +24,7 @@ Configurations is done through a simple initializer.
 ```
 # config/initializers/snippets.rb
 
-Snippets.config do |config|
+Snippets.configure do |config|
 	config.title = "Website Title"
 	config.url = "http://snippets.dev"
 	config.username = "admin"

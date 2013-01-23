@@ -5,18 +5,18 @@ require "snippets/configuration"
 
 module Snippets
 	class << self
-		def config(&block)
+		def config
 			@@configuration ||= Snippets::Configuration.new
+		end
 
-			yield @@configuration if block_given?
-
-			@@configuration
+		def configure(&block)
+			yield config
 		end
 
 		def all
 			snippets = []
 			
-			@@configuration.snippets.each do |key, snippet|
+			config.snippets.each do |key, snippet|
 				snippets << snippet
 			end
 
@@ -28,9 +28,7 @@ module Snippets
 		end
 
 		def find(key)
-			# Running into caching problems with live data. Skip caching for now.
-			# @@configuration.snippets[key.to_s] ||= 
-			Snippet.where(:key => key).first
+			config.snippets[key.to_s]
 		end
 
 		def get(key)
@@ -42,9 +40,11 @@ module Snippets
 		end
 
 		def set(key, content)
-			snippet = find(key) || Snippet.new(:key => key)
+			snippet = find(key)
 			snippet.content = content
 			snippet.save
+
+			snippet
 		end
 
 		def tree

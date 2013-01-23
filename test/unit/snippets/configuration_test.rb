@@ -8,7 +8,7 @@ module Snippets
   	end
 
     test "title can be set" do
-    	Snippets.config do |config|
+    	Snippets.configure do |config|
     		config.title = "Test Title"
     	end
 
@@ -22,7 +22,7 @@ module Snippets
 	end
 
 	test "snippets can be defined" do
-		Snippets.config do |config|
+		Snippets.configure do |config|
 			config.sitemap do
 				home
 			end
@@ -32,7 +32,7 @@ module Snippets
 	end
 
 	test "snippets can override the default label" do
-		Snippets.config do |config|
+		Snippets.configure do |config|
 			config.sitemap do
 				home("Home Page")
 			end
@@ -42,7 +42,7 @@ module Snippets
 	end
 
 	test "snippets can be nested" do
-		Snippets.config do |config|
+		Snippets.configure do |config|
 			config.sitemap do
 				home do
 					header do

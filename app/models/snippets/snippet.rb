@@ -6,6 +6,8 @@ class Snippets::Snippet < ActiveRecord::Base
 
   validates :key, :presence => true, :uniqueness => true
 
+  after_update :invalidate_cache
+
   def root?
     crumbs.count == 1
   end
@@ -36,5 +38,10 @@ class Snippets::Snippet < ActiveRecord::Base
 
   def label
   	self[:label] || base_key.to_s.titleize
+  end
+
+  private
+  def invalidate_cache
+    Snippets.find(key).content = content if content_changed?
   end
 end

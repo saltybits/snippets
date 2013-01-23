@@ -9,17 +9,10 @@ module Snippets
 
   	test "snippets must have key" do
   		snippet = Snippet.new
-  		snippet.save
 
-  		assert snippet.errors.count == 1
+      assert !snippet.valid?
+  		assert snippet.errors.include?(:key)
   	end
-
-    test "snippets can be found by key" do
-    	snippet = Snippet.new(:key => "home", :content => "Testing")
-      snippet.save!
-
-    	assert Snippets.find(:home).content == "Testing"
-    end
 
     test "default label provided" do
     	assert Snippet.new(:key => "test_key").label == "Test Key"
