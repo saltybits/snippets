@@ -4,12 +4,14 @@ A simple, developer focused CMS for Rails.
 
 ## Installation
 
-Until the gem is available use:
+Use the github repo until the gem is available.
 
 ```
 # Gemfile
 gem 'snippets', :git => 'git://github.com/saltybits/snippets.git'
 ```
+
+To finish the installation make sure to run the following:
 
 ```
 bundle					     # install snippets
@@ -53,9 +55,7 @@ end
 
 ## Editting Snippets
 
-Go to `website.com/admin` and enter the username and password you've chosen (default is 'admin' / 'password').
-
-Use the texteditor to edit the snippets' content.
+Go to `website.com/admin` and enter the username and password you've chosen (default is `admin` / `password`).
 
 ## Embedding Snippets
 
@@ -64,13 +64,29 @@ Use the texteditor to edit the snippets' content.
 
 <h1><%= Snippets.get('welcome/headline') %></h1>
 <p><%= Snippets.get('welcome/message') %></p>
+```
 
-# or, use `Snippets.get!` to allow the welcome message to be marked up.
-# (equivalent to `Snippets.get(...).html_safe`)
-<div class="welcome-message"><%= Snippets.get!('welcome/message') %></div>
+You have a couple options if you want to allow snippets to contain html:
+
+```
+# using get!
+<%= Snippets.get!('welcome/message') %> # equivalent to Snippets.get(...).html_safe
+
+# using raw
+<%= raw Snippets.get('welcome/message') %>
 ```
 
 ## Notes
 
 Snippets was deliberately designed to not allow new Snippets to be defined at runtime.  To add / remove snippets
 you must update the initializer and restart the server.
+
+### Heroku Users
+
+Make sure to add the following to `application.rb` or you're going to run into problems.  This is due to the
+initializer interacting with the database during the assets precompilation stage.
+
+```
+# application.rb
+config.assets.initialize_on_precompile = false
+```
